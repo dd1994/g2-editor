@@ -4,10 +4,12 @@ import React from 'react';
 
 export default class Data extends React.Component {
     render() {
+        const dimension = ['xx', 'uy'];
+        const measure = ['n', 'y'];
         return (
             <div className="data">
-                <Dimension />
-                <Measure />
+                <Dimension dimensions={dimension} />
+                <Measure measures={measure} />
             </div>
         );
     }
