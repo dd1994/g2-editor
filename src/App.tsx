@@ -87,6 +87,7 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
             return R.not(R.is(Number, exampleData[key]));
         });
     }
+
     onGeomTypeChange = (val: string) => {
         console.log(val);
         this.setState({ geomType: val });
@@ -97,7 +98,12 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
         return (
             <div className="App">
                 <Data dimensions={dimensions} measures={measures} />
-                <Geom geomTypeOptions={this.state.geomTypeOptions} geomType={this.state.geomType} onGeomTypeChange={this.onGeomTypeChange} />
+                <Geom
+                    geomTypeOptions={this.state.geomTypeOptions}
+                    geomType={this.state.geomType}
+                    onGeomTypeChange={this.onGeomTypeChange}
+                    geomAttr={this.state.geomAttr}
+                />
             </div>
         );
     }
