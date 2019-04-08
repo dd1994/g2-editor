@@ -12,9 +12,9 @@ export default class Measure extends React.Component<{ measures: Array<string> }
         });
 
         return (
-            <div>
+            <div className="measures">
                 <h3>Measures</h3>
-                {measureItems}
+                <ul>{measureItems}</ul>
             </div>
         );
     }

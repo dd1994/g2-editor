@@ -7,7 +7,7 @@ export default class Data extends React.Component {
         const dimension = ['xx', 'uy'];
         const measure = ['n', 'y'];
         return (
-            <div className="data">
+            <div className="data gray-border">
                 <Dimension dimensions={dimension} />
                 <Measure measures={measure} />
             </div>

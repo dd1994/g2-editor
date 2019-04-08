@@ -12,9 +12,9 @@ export default class Dimensions extends React.Component<{ dimensions: Array<stri
         });
 
         return (
-            <div>
+            <div className="dimensions">
                 <h3>Dimensions</h3>
-                {dimensionItems}
+                <ul>{dimensionItems}</ul>
             </div>
         );
     }

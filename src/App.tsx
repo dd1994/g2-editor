@@ -8,7 +8,6 @@ class App extends Component {
         return (
             <div className="App">
                 <Data />
-                <Button type="primary">Button</Button>
             </div>
         );
     }
