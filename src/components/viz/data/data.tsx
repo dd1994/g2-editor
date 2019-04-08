@@ -2,14 +2,12 @@ import Dimension from './dimensions';
 import Measure from './measures';
 import React from 'react';
 
-export default class Data extends React.Component {
+export default class Data extends React.Component<{ dimensions: Array<string>; measures: Array<string> }, {}> {
     render() {
-        const dimension = ['xx', 'uy'];
-        const measure = ['n', 'y'];
         return (
             <div className="data gray-border">
-                <Dimension dimensions={dimension} />
-                <Measure measures={measure} />
+                <Dimension dimensions={this.props.dimensions} />
+                <Measure measures={this.props.measures} />
             </div>
         );
     }
