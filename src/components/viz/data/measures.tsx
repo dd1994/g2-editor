@@ -5,7 +5,7 @@ export default class Measure extends React.Component<{ measures: Array<string> }
     render() {
         const measureItems = this.props.measures.map((item: string) => {
             return (
-                <li key={item}>
+                <li draggable key={item}>
                     <Tag color="green">{item}</Tag>
                 </li>
             );

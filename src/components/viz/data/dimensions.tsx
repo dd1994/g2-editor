@@ -5,7 +5,7 @@ export default class Dimensions extends React.Component<{ dimensions: Array<stri
     render() {
         const dimensionItems = this.props.dimensions.map((item: string) => {
             return (
-                <li key={item}>
+                <li draggable key={item}>
                     <Tag color="blue">{item}</Tag>
                 </li>
             );
