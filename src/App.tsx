@@ -6,6 +6,7 @@ import Data from './components/viz/data/data';
 import { data } from './components/viz/data/gdp';
 import G2 from '@antv/g2';
 import * as R from 'ramda';
+import Geom from './components/viz/geom';
 
 const DataSet = require('@antv/data-set');
 
@@ -66,6 +67,7 @@ class App extends Component<{}, { data: any }> {
         return (
             <div className="App">
                 <Data dimensions={dimensions} measures={measures} />
+                <Geom />
             </div>
         );
     }

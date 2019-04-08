@@ -25,3 +25,9 @@
 .measures ul {
     list-style: none;
 }
+
+.geom {
+    width: 135px;
+    flex: none;
+    margin: 5px;
+}
