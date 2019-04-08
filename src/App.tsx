@@ -10,7 +10,7 @@ import Geom from './components/viz/geom';
 
 const DataSet = require('@antv/data-set');
 
-class App extends Component<{}, { data: any }> {
+class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any; geomType: any }> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -31,7 +31,34 @@ class App extends Component<{}, { data: any }> {
                         row.GDP = Number(row.GDP);
                         return row;
                     }
-                })
+                }),
+            geomType: 'line',
+            geomTypeOptions: [
+                {
+                    label: 'line',
+                    value: 'line'
+                },
+                {
+                    label: 'point',
+                    value: 'point'
+                },
+                {
+                    label: 'interval',
+                    value: 'interval'
+                },
+                {
+                    label: 'area',
+                    value: 'area'
+                }
+            ],
+            geomAttr: {
+                color: null,
+                size: null,
+                label: [],
+                tooltip: [],
+                shape: null,
+                fields: []
+            }
         };
     }
 
@@ -60,14 +87,17 @@ class App extends Component<{}, { data: any }> {
             return R.not(R.is(Number, exampleData[key]));
         });
     }
-
+    onGeomTypeChange = (val: string) => {
+        console.log(val);
+        this.setState({ geomType: val });
+    };
     render() {
         const dimensions = this.dimensions;
         const measures = this.measures;
         return (
             <div className="App">
                 <Data dimensions={dimensions} measures={measures} />
-                <Geom />
+                <Geom geomTypeOptions={this.state.geomTypeOptions} geomType={this.state.geomType} onGeomTypeChange={this.onGeomTypeChange} />
             </div>
         );
     }
