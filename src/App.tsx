@@ -52,11 +52,11 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
                 }
             ],
             geomAttr: {
-                color: null,
-                size: null,
+                color: [],
+                size: [],
                 label: [],
                 tooltip: [],
-                shape: null,
+                shape: [],
                 fields: []
             },
             dragItem: null
@@ -112,7 +112,7 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
             this.setState({
                 geomAttr: {
                     ...this.state.geomAttr,
-                    [attr]: this.state.dragItem
+                    [attr]: [this.state.dragItem]
                 }
             });
         }
