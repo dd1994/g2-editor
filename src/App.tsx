@@ -34,9 +34,7 @@ class App extends Component<
                     type: 'filter',
                     callback(row: any) {
                         // 判断某一行是否保留，默认返回true
-                        return ['China', 'Japan', 'United States'].includes(
-                            row['Entity']
-                        );
+                        return ['China', 'Japan', 'United States'].includes(row['Entity']);
                     }
                 })
                 .transform({
@@ -122,11 +120,7 @@ class App extends Component<
                 {
                     geomAttr: {
                         ...this.state.geomAttr,
-                        [attr]: R.uniq(
-                            this.state.geomAttr[attr].concat([
-                                this.state.dragItem
-                            ])
-                        )
+                        [attr]: R.uniq(this.state.geomAttr[attr].concat([this.state.dragItem]))
                     }
                 },
                 this.renderChart
@@ -171,20 +165,13 @@ class App extends Component<
         if (
             R.any(
                 R.isEmpty,
-                R.map(R.prop(R.__, this.state as any), [
-                    'data',
-                    'geomType',
-                    'xAxis',
-                    'yAxis'
-                ])
+                R.map(R.prop(R.__, this.state as any), ['data', 'geomType', 'xAxis', 'yAxis'])
             )
         ) {
             return;
         }
 
-        const geom = this.state.chart
-            .source(this.state.data)
-            [this.state.geomType]();
+        const geom = this.state.chart.source(this.state.data)[this.state.geomType]();
         geom.position(`${this.state.xAxis[0]}*${this.state.yAxis[0]}`);
 
         Object.keys(this.state.geomAttr).forEach((attr: GeomAttr) => {
@@ -197,8 +184,7 @@ class App extends Component<
     componentDidMount() {
         const chart: G2.Chart = new G2.Chart({
             container: 'c',
-            width: (document.getElementById('c') || { clientWidth: 0 })
-                .clientWidth
+            width: (document.getElementById('c') || { clientWidth: 0 }).clientWidth
         });
         this.setState({ chart });
     }
@@ -208,11 +194,7 @@ class App extends Component<
         const measures = this.measures;
         return (
             <div className="App">
-                <Data
-                    dimensions={dimensions}
-                    measures={measures}
-                    setDragItem={this.setDragItem}
-                />
+                <Data dimensions={dimensions} measures={measures} setDragItem={this.setDragItem} />
                 <Geom
                     geomTypeOptions={this.state.geomTypeOptions}
                     geomType={this.state.geomType}
