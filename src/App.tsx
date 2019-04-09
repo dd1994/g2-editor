@@ -10,7 +10,7 @@ import Geom from './components/viz/geom';
 
 const DataSet = require('@antv/data-set');
 
-class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any; geomType: any }> {
+class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any; geomType: any; dragItem: any }> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -58,7 +58,8 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
                 tooltip: [],
                 shape: null,
                 fields: []
-            }
+            },
+            dragItem: null
         };
     }
 
@@ -89,15 +90,20 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
     }
 
     onGeomTypeChange = (val: string) => {
-        console.log(val);
         this.setState({ geomType: val });
     };
+
+    setDragItem = (val: string) => {
+        console.log(val);
+        this.setState({ dragItem: val });
+    };
+
     render() {
         const dimensions = this.dimensions;
         const measures = this.measures;
         return (
             <div className="App">
-                <Data dimensions={dimensions} measures={measures} />
+                <Data dimensions={dimensions} measures={measures} setDragItem={this.setDragItem} />
                 <Geom
                     geomTypeOptions={this.state.geomTypeOptions}
                     geomType={this.state.geomType}
