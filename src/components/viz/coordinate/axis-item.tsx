@@ -13,7 +13,7 @@ export default class AxisItem extends React.Component<{ field: Field; axis: Axis
         );
 
         return (
-            <li key={this.props.axis}>
+            <li>
                 <Tag color={this.props.color}>
                     <Dropdown overlay={menu} trigger={['click']}>
                         <a className="ant-dropdown-link" href="#">

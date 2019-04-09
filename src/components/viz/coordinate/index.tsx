@@ -22,10 +22,10 @@ export default class Coordinate extends React.Component<
     }
     render() {
         const y = this.props.yAxis.map((field: Field) => {
-            return <AxisItem field={field} axis={Axis.y} color={this.getFieldColor(field)} />;
+            return <AxisItem key={'y' + field} field={field} axis={Axis.y} color={this.getFieldColor(field)} />;
         });
         const x = this.props.xAxis.map((field: Field) => {
-            return <AxisItem field={field} axis={Axis.x} color={this.getFieldColor(field)} />;
+            return <AxisItem key={'x' + field} field={field} axis={Axis.x} color={this.getFieldColor(field)} />;
         });
         return (
             <div className="coordinates-container">
