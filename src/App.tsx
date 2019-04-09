@@ -9,7 +9,18 @@ import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
 
 const DataSet = require('@antv/data-set');
-class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any; geomType: any; dragItem: any }> {
+class App extends Component<
+    {},
+    {
+        data: any;
+        geomAttr: any;
+        geomTypeOptions: any;
+        geomType: any;
+        dragItem: any;
+        xAxis: Array<string>;
+        yAxis: Array<string>;
+    }
+> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -58,7 +69,9 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
                 shape: [],
                 fields: []
             },
-            dragItem: null
+            dragItem: null,
+            xAxis: [],
+            yAxis: []
         };
     }
 
