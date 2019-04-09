@@ -30,6 +30,7 @@ export default class Geom extends React.Component<
     };
 
     handleGeomAttrDropdown = ({ key }: { key: string }) => {
+        // 这里用 JSON 也是无奈之举，因为 key 的类型只能是 number | string | undefined
         this.props.handleGeomAttrDropdown(JSON.parse(key));
     };
 
