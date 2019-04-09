@@ -179,7 +179,7 @@ class App extends Component<
     componentDidMount() {
         const chart: G2.Chart = new G2.Chart({
             container: 'c',
-            width: 800
+            width: (document.getElementById('c') || { clientWidth: 0 }).clientWidth
         });
         this.setState({ chart });
     }
