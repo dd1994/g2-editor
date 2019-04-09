@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from 'antd/lib/button';
 
 import './App.css';
 import Data from './components/viz/data/data';
@@ -129,6 +128,8 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
                     onGeomTypeChange={this.onGeomTypeChange}
                     geomAttr={this.state.geomAttr}
                     handleDropGeomAttr={this.handleDropGeomAttr}
+                    dimensions={dimensions}
+                    measures={measures}
                 />
             </div>
         );

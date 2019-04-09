@@ -5,12 +5,24 @@ import { Menu, Dropdown, Icon } from 'antd';
 const Option = Select.Option;
 
 export default class Geom extends React.Component<
-    { geomTypeOptions: any; geomType: string; onGeomTypeChange: any; geomAttr: any; handleDropGeomAttr: any },
+    {
+        geomTypeOptions: any;
+        geomType: string;
+        onGeomTypeChange: any;
+        geomAttr: any;
+        handleDropGeomAttr: any;
+        dimensions: Array<string>;
+        measures: Array<string>;
+    },
     any
 > {
     handleDragOver(e: any) {
         e.preventDefault();
     }
+    isDimension = (attr: string) => {
+        console.log(this.props.dimensions, attr);
+        return this.props.dimensions.includes(attr);
+    };
     handleDrop = (attr: string) => {
         this.props.handleDropGeomAttr(attr);
     };
@@ -47,7 +59,7 @@ export default class Geom extends React.Component<
                     );
                     return (
                         <li key={key + val} className="geom-attr-value-item">
-                            <Tag color="blue">
+                            <Tag color={this.isDimension(val) ? 'blue' : 'green'}>
                                 <Dropdown overlay={menu} trigger={['click']}>
                                     <a className="ant-dropdown-link" href="#">
                                         {key}: {val} <Icon type="down" />
@@ -59,6 +71,7 @@ export default class Geom extends React.Component<
                 })
             );
         }, []);
+
         return (
             <div className="geom gray-border">
                 <h3>GEOM</h3>
