@@ -105,8 +105,7 @@ class App extends Component<
     }
 
     onGeomTypeChange = (val: string) => {
-        this.setState({ geomType: val });
-        this.renderChart();
+        this.setState({ geomType: val }, this.renderChart);
     };
 
     setDragItem = (val: Field) => {
@@ -117,42 +116,50 @@ class App extends Component<
     }
     handleDropGeomAttr = (attr: GeomAttr) => {
         if (this.geomAttrCouldIncludesMultipleValue(attr)) {
-            this.setState({
-                geomAttr: {
-                    ...this.state.geomAttr,
-                    [attr]: R.uniq(this.state.geomAttr[attr].concat([this.state.dragItem]))
-                }
-            });
+            this.setState(
+                {
+                    geomAttr: {
+                        ...this.state.geomAttr,
+                        [attr]: R.uniq(this.state.geomAttr[attr].concat([this.state.dragItem]))
+                    }
+                },
+                this.renderChart
+            );
         } else {
-            this.setState({
-                geomAttr: {
-                    ...this.state.geomAttr,
-                    [attr]: [this.state.dragItem]
-                }
-            });
+            this.setState(
+                {
+                    geomAttr: {
+                        ...this.state.geomAttr,
+                        [attr]: [this.state.dragItem]
+                    }
+                },
+                this.renderChart
+            );
         }
-
-        this.renderChart();
     };
 
     handleDropY = () => {
         if (!this.state.yAxis.includes(this.state.dragItem)) {
-            this.setState({
-                yAxis: [...this.state.yAxis, this.state.dragItem]
-            });
+            this.setState(
+                {
+                    yAxis: [...this.state.yAxis, this.state.dragItem]
+                },
+                this.renderChart
+            );
         }
-        this.renderChart();
     };
     handleDropX = () => {
         if (!this.state.xAxis.includes(this.state.dragItem)) {
-            this.setState({
-                xAxis: [...this.state.xAxis, this.state.dragItem]
-            });
+            this.setState(
+                {
+                    xAxis: [...this.state.xAxis, this.state.dragItem]
+                },
+                this.renderChart
+            );
         }
-        this.renderChart();
     };
 
-    renderChart() {
+    renderChart = () => {
         this.state.chart.clear();
 
         if (R.any(R.isEmpty, [this.state.data, this.state.geomType, this.state.xAxis, this.state.yAxis])) {
@@ -168,7 +175,7 @@ class App extends Component<
             }
         });
         this.state.chart.repaint();
-    }
+    };
     componentDidMount() {
         const chart: G2.Chart = new G2.Chart({
             container: 'c',
