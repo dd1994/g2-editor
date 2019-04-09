@@ -199,8 +199,7 @@ class App extends Component<
             columns = Object.keys(dataSource[0]).map(item => {
                 return {
                     title: item,
-                    dataIndex: item,
-                    key: item
+                    dataIndex: item
                 };
             });
         }
