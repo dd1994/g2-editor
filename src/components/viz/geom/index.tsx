@@ -1,5 +1,7 @@
 import React from 'react';
-import { Select } from 'antd';
+import { Select, Tag } from 'antd';
+import { Menu, Dropdown, Icon } from 'antd';
+
 const Option = Select.Option;
 
 export default class Geom extends React.Component<
@@ -36,9 +38,22 @@ export default class Geom extends React.Component<
         const geomAttrsValue = Object.keys(this.props.geomAttr).reduce((acc: any, key: string) => {
             return acc.concat(
                 this.props.geomAttr[key].map((val: string) => {
+                    const menu = (
+                        <Menu>
+                            <Menu.Item key="0">
+                                <a href="#">移除</a>
+                            </Menu.Item>
+                        </Menu>
+                    );
                     return (
-                        <li>
-                            {key}: {val}
+                        <li key={key + val} className="geom-attr-value-item">
+                            <Tag color="blue">
+                                <Dropdown overlay={menu} trigger={['click']}>
+                                    <a className="ant-dropdown-link" href="#">
+                                        {key}: {val} <Icon type="down" />
+                                    </a>
+                                </Dropdown>
+                            </Tag>
                         </li>
                     );
                 })
