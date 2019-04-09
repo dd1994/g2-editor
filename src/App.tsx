@@ -6,9 +6,9 @@ import { data } from './components/viz/data/gdp';
 import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/geom';
+import Coordinate from './components/viz/coordinate';
 
 const DataSet = require('@antv/data-set');
-
 class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any; geomType: any; dragItem: any }> {
     constructor(props: any) {
         super(props);
@@ -131,6 +131,7 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
                     dimensions={dimensions}
                     measures={measures}
                 />
+                <Coordinate />
             </div>
         );
     }

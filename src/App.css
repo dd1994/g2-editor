@@ -60,3 +60,24 @@
 .geom .geom-attr-value .geom-attr-value-item {
     margin: 5px;
 }
+
+.coordinates-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: auto;
+}
+
+.coordinates-container .axis {
+    margin: 5px;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.coordinates-container .axis h3 {
+    margin-right: 20px;
+}
