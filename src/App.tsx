@@ -7,7 +7,7 @@ import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
-import { Field, GeomAttr, DropDownOperation } from './components/viz/types';
+import { Field, GeomAttr, DropDownOperation, Axis } from './components/viz/types';
 import { Table } from 'antd';
 
 const DataSet = require('@antv/data-set');
@@ -190,6 +190,33 @@ class App extends Component<
         this.setState({ chart });
     }
 
+    handleAxisDropdown = ({
+        operation,
+        axis,
+        value
+    }: {
+        operation: DropDownOperation;
+        axis: Axis;
+        value: Field;
+    }) => {
+        if (operation === DropDownOperation.remove) {
+            if (axis === Axis.x) {
+                this.setState(
+                    {
+                        xAxis: R.without([value], this.state.xAxis)
+                    },
+                    this.renderChart
+                );
+            } else if (axis === Axis.y) {
+                this.setState(
+                    {
+                        yAxis: R.without([value], this.state.yAxis)
+                    },
+                    this.renderChart
+                );
+            }
+        }
+    };
     handleGeomAttrDropdown = ({
         operation,
         attr,
@@ -250,6 +277,7 @@ class App extends Component<
                         dragItem={this.state.dragItem}
                         handleDropX={this.handleDropX}
                         handleDropY={this.handleDropY}
+                        handleAxisDropdown={this.handleAxisDropdown}
                     />
                 </div>
                 {dataSource.length > 0 && (

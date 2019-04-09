@@ -11,6 +11,7 @@ export default class Coordinate extends React.Component<
         dragItem: Field;
         handleDropY: any;
         handleDropX: any;
+        handleAxisDropdown: any;
     },
     {}
 > {
@@ -22,10 +23,26 @@ export default class Coordinate extends React.Component<
     }
     render() {
         const y = this.props.yAxis.map((field: Field) => {
-            return <AxisItem key={'y' + field} field={field} axis={Axis.y} color={this.getFieldColor(field)} />;
+            return (
+                <AxisItem
+                    key={'y' + field}
+                    field={field}
+                    axis={Axis.y}
+                    color={this.getFieldColor(field)}
+                    handleAxisDropdown={this.props.handleAxisDropdown}
+                />
+            );
         });
         const x = this.props.xAxis.map((field: Field) => {
-            return <AxisItem key={'x' + field} field={field} axis={Axis.x} color={this.getFieldColor(field)} />;
+            return (
+                <AxisItem
+                    key={'x' + field}
+                    field={field}
+                    axis={Axis.x}
+                    color={this.getFieldColor(field)}
+                    handleAxisDropdown={this.props.handleAxisDropdown}
+                />
+            );
         });
         return (
             <div className="coordinates-container">
