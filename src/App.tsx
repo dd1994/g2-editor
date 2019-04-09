@@ -7,7 +7,7 @@ import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
-import { Field } from './components/viz/types';
+import { Field, GeomAttr } from './components/viz/types';
 
 const DataSet = require('@antv/data-set');
 class App extends Component<
@@ -106,13 +106,13 @@ class App extends Component<
         this.setState({ geomType: val });
     };
 
-    setDragItem = (val: string) => {
+    setDragItem = (val: Field) => {
         this.setState({ dragItem: val });
     };
-    geomAttrCouldIncludesMultipleValue(attr: string) {
+    geomAttrCouldIncludesMultipleValue(attr: GeomAttr) {
         return ['label', 'tooltip', 'fields'].includes(attr);
     }
-    handleDropGeomAttr = (attr: string) => {
+    handleDropGeomAttr = (attr: GeomAttr) => {
         if (this.geomAttrCouldIncludesMultipleValue(attr)) {
             this.setState({
                 geomAttr: {
