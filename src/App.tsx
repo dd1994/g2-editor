@@ -132,12 +132,16 @@ class App extends Component<
 
     handleDropY = () => {
         if (!this.state.yAxis.includes(this.state.dragItem)) {
-            this.state.yAxis.push(this.state.dragItem);
+            this.setState({
+                yAxis: [...this.state.yAxis, this.state.dragItem]
+            });
         }
     };
     handleDropX = () => {
         if (!this.state.xAxis.includes(this.state.dragItem)) {
-            this.state.xAxis.push(this.state.dragItem);
+            this.setState({
+                xAxis: [...this.state.xAxis, this.state.dragItem]
+            });
         }
     };
 
