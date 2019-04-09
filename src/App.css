@@ -54,7 +54,7 @@
 
 .geom .geom-attr-value {
     list-style: none;
-    padding-left: 0;
+    padding-left: 0; /* 这个我也不知道为啥要这么写 */
 }
 
 .geom .geom-attr-value .geom-attr-value-item {

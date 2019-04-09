@@ -104,7 +104,7 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
             this.setState({
                 geomAttr: {
                     ...this.state.geomAttr,
-                    [attr]: this.state.geomAttr[attr].concat([this.state.dragItem])
+                    [attr]: R.uniq(this.state.geomAttr[attr].concat([this.state.dragItem]))
                 }
             });
         } else {
