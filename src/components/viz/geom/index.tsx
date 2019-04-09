@@ -33,6 +33,17 @@ export default class Geom extends React.Component<
             );
         });
 
+        const geomAttrsValue = Object.keys(this.props.geomAttr).reduce((acc: any, key: string) => {
+            return acc.concat(
+                this.props.geomAttr[key].map((val: string) => {
+                    return (
+                        <li>
+                            {key}: {val}
+                        </li>
+                    );
+                })
+            );
+        }, []);
         return (
             <div className="geom gray-border">
                 <h3>GEOM</h3>
@@ -44,6 +55,7 @@ export default class Geom extends React.Component<
                     {options}
                 </Select>
                 <div className="geom-attr-container">{geomAttrs}</div>
+                <ul className="geom-attr-value">{geomAttrsValue}</ul>
             </div>
         );
     }

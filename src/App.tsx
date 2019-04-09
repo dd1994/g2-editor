@@ -94,7 +94,6 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
     };
 
     setDragItem = (val: string) => {
-        console.log(val);
         this.setState({ dragItem: val });
     };
     geomAttrCouldIncludesMultipleValue(attr: string) {
