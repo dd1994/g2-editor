@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select, Tag } from 'antd';
 import { Menu, Dropdown, Icon } from 'antd';
+import { Color } from '../types';
 
 const Option = Select.Option;
 
@@ -19,10 +20,10 @@ export default class Geom extends React.Component<
     handleDragOver(e: any) {
         e.preventDefault();
     }
-    isDimension = (attr: string) => {
-        console.log(this.props.dimensions, attr);
-        return this.props.dimensions.includes(attr);
+    getFieldColor = (attr: string) => {
+        return this.props.dimensions.includes(attr) ? Color.blue : Color.green;
     };
+
     handleDrop = (attr: string) => {
         this.props.handleDropGeomAttr(attr);
     };
@@ -59,7 +60,7 @@ export default class Geom extends React.Component<
                     );
                     return (
                         <li key={key + val} className="geom-attr-value-item">
-                            <Tag color={this.isDimension(val) ? 'blue' : 'green'}>
+                            <Tag color={this.getFieldColor(val)}>
                                 <Dropdown overlay={menu} trigger={['click']}>
                                     <a className="ant-dropdown-link" href="#">
                                         {key}: {val} <Icon type="down" />

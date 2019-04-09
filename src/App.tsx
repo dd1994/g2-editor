@@ -7,6 +7,7 @@ import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
+import { Field } from './components/viz/types';
 
 const DataSet = require('@antv/data-set');
 class App extends Component<
@@ -16,7 +17,7 @@ class App extends Component<
         geomAttr: any;
         geomTypeOptions: any;
         geomType: any;
-        dragItem: any;
+        dragItem: Field;
         xAxis: Array<string>;
         yAxis: Array<string>;
     }
@@ -69,7 +70,7 @@ class App extends Component<
                 shape: [],
                 fields: []
             },
-            dragItem: null,
+            dragItem: '',
             xAxis: [],
             yAxis: []
         };
@@ -129,6 +130,17 @@ class App extends Component<
         }
     };
 
+    handleDropY = () => {
+        if (!this.state.yAxis.includes(this.state.dragItem)) {
+            this.state.yAxis.push(this.state.dragItem);
+        }
+    };
+    handleDropX = () => {
+        if (!this.state.xAxis.includes(this.state.dragItem)) {
+            this.state.xAxis.push(this.state.dragItem);
+        }
+    };
+
     render() {
         const dimensions = this.dimensions;
         const measures = this.measures;
@@ -144,7 +156,14 @@ class App extends Component<
                     dimensions={dimensions}
                     measures={measures}
                 />
-                <Coordinate />
+                <Coordinate
+                    yAxis={this.state.yAxis}
+                    xAxis={this.state.xAxis}
+                    dimensions={this.dimensions}
+                    dragItem={this.state.dragItem}
+                    handleDropX={this.handleDropX}
+                    handleDropY={this.handleDropY}
+                />
             </div>
         );
     }
