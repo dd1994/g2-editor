@@ -20,6 +20,7 @@ class App extends Component<
         dragItem: Field;
         xAxis: Array<string>;
         yAxis: Array<string>;
+        chart: any;
     }
 > {
     constructor(props: any) {
@@ -72,7 +73,8 @@ class App extends Component<
             },
             dragItem: '',
             xAxis: [],
-            yAxis: []
+            yAxis: [],
+            chart: null
         };
     }
 
@@ -104,6 +106,7 @@ class App extends Component<
 
     onGeomTypeChange = (val: string) => {
         this.setState({ geomType: val });
+        this.renderChart();
     };
 
     setDragItem = (val: Field) => {
@@ -128,6 +131,8 @@ class App extends Component<
                 }
             });
         }
+
+        this.renderChart();
     };
 
     handleDropY = () => {
@@ -136,6 +141,7 @@ class App extends Component<
                 yAxis: [...this.state.yAxis, this.state.dragItem]
             });
         }
+        this.renderChart();
     };
     handleDropX = () => {
         if (!this.state.xAxis.includes(this.state.dragItem)) {
@@ -143,7 +149,33 @@ class App extends Component<
                 xAxis: [...this.state.xAxis, this.state.dragItem]
             });
         }
+        this.renderChart();
     };
+
+    renderChart() {
+        this.state.chart.clear();
+
+        if (R.any(R.isEmpty, [this.state.data, this.state.geomType, this.state.xAxis, this.state.yAxis])) {
+            return;
+        }
+
+        const geom = this.state.chart.source(this.state.data)[this.state.geomType]();
+        geom.position(`${this.state.xAxis[0]}*${this.state.yAxis[0]}`);
+
+        Object.keys(this.state.geomAttr).forEach((attr: GeomAttr) => {
+            if (this.state.geomAttr[attr].length) {
+                geom[attr](this.state.geomAttr[attr].join('*'));
+            }
+        });
+        this.state.chart.repaint();
+    }
+    componentDidMount() {
+        const chart: G2.Chart = new G2.Chart({
+            container: 'c',
+            width: 800
+        });
+        this.setState({ chart });
+    }
 
     render() {
         const dimensions = this.dimensions;
