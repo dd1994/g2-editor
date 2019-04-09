@@ -97,6 +97,26 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
         console.log(val);
         this.setState({ dragItem: val });
     };
+    geomAttrCouldIncludesMultipleValue(attr: string) {
+        return ['label', 'tooltip', 'fields'].includes(attr);
+    }
+    handleDropGeomAttr = (attr: string) => {
+        if (this.geomAttrCouldIncludesMultipleValue(attr)) {
+            this.setState({
+                geomAttr: {
+                    ...this.state.geomAttr,
+                    [attr]: this.state.geomAttr[attr].concat([this.state.dragItem])
+                }
+            });
+        } else {
+            this.setState({
+                geomAttr: {
+                    ...this.state.geomAttr,
+                    [attr]: this.state.dragItem
+                }
+            });
+        }
+    };
 
     render() {
         const dimensions = this.dimensions;
@@ -109,6 +129,7 @@ class App extends Component<{}, { data: any; geomAttr: any; geomTypeOptions: any
                     geomType={this.state.geomType}
                     onGeomTypeChange={this.onGeomTypeChange}
                     geomAttr={this.state.geomAttr}
+                    handleDropGeomAttr={this.handleDropGeomAttr}
                 />
             </div>
         );

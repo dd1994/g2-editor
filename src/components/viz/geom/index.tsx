@@ -3,9 +3,15 @@ import { Select } from 'antd';
 const Option = Select.Option;
 
 export default class Geom extends React.Component<
-    { geomTypeOptions: any; geomType: string; onGeomTypeChange: any; geomAttr: any },
+    { geomTypeOptions: any; geomType: string; onGeomTypeChange: any; geomAttr: any; handleDropGeomAttr: any },
     any
 > {
+    handleDragOver(e: any) {
+        e.preventDefault();
+    }
+    handleDrop = (attr: string) => {
+        this.props.handleDropGeomAttr(attr);
+    };
     render() {
         const options = this.props.geomTypeOptions.map((item: { label: string; value: string }) => {
             return (
@@ -16,7 +22,12 @@ export default class Geom extends React.Component<
         });
         const geomAttrs = Object.keys(this.props.geomAttr).map((key: string) => {
             return (
-                <div key={key} className="geom-attr gray-border">
+                <div
+                    key={key}
+                    className="geom-attr gray-border"
+                    onDragOver={this.handleDragOver}
+                    onDrop={this.handleDrop.bind(this, key)}
+                >
                     {key}
                 </div>
             );
