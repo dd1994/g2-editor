@@ -11,3 +11,7 @@ export enum Axis {
     x,
     y
 }
+
+export enum DropDownOperation {
+    remove
+}

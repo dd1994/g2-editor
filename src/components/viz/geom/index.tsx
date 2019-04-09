@@ -1,7 +1,7 @@
 import React from 'react';
-import { Select, Tag } from 'antd';
+import { Select, Tag, message } from 'antd';
 import { Menu, Dropdown, Icon } from 'antd';
-import { Color } from '../types';
+import { Color, DropDownOperation, GeomAttr, Field } from '../types';
 
 const Option = Select.Option;
 
@@ -14,6 +14,7 @@ export default class Geom extends React.Component<
         handleDropGeomAttr: any;
         dimensions: Array<string>;
         measures: Array<string>;
+        handleGeomAttrDropdown: any;
     },
     any
 > {
@@ -27,6 +28,11 @@ export default class Geom extends React.Component<
     handleDrop = (attr: string) => {
         this.props.handleDropGeomAttr(attr);
     };
+
+    handleGeomAttrDropdown = ({ key }: { key: string }) => {
+        this.props.handleGeomAttrDropdown(JSON.parse(key));
+    };
+
     render() {
         const options = this.props.geomTypeOptions.map((item: { label: string; value: string }) => {
             return (
@@ -52,8 +58,14 @@ export default class Geom extends React.Component<
             return acc.concat(
                 this.props.geomAttr[key].map((val: string) => {
                     const menu = (
-                        <Menu>
-                            <Menu.Item key="0">
+                        <Menu onClick={this.handleGeomAttrDropdown}>
+                            <Menu.Item
+                                key={JSON.stringify({
+                                    operation: DropDownOperation.remove,
+                                    attr: key,
+                                    value: val
+                                })}
+                            >
                                 <a href="#">移除</a>
                             </Menu.Item>
                         </Menu>
