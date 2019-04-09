@@ -8,6 +8,7 @@ import * as R from 'ramda';
 import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
 import { Field, GeomAttr } from './components/viz/types';
+import { Table } from 'antd';
 
 const DataSet = require('@antv/data-set');
 class App extends Component<
@@ -192,26 +193,48 @@ class App extends Component<
     render() {
         const dimensions = this.dimensions;
         const measures = this.measures;
+        const dataSource = this.state.data.rows;
+        let columns;
+        if (dataSource.length) {
+            columns = Object.keys(dataSource[0]).map(item => {
+                return {
+                    title: item,
+                    dataIndex: item,
+                    key: item
+                };
+            });
+        }
         return (
             <div className="App">
-                <Data dimensions={dimensions} measures={measures} setDragItem={this.setDragItem} />
-                <Geom
-                    geomTypeOptions={this.state.geomTypeOptions}
-                    geomType={this.state.geomType}
-                    onGeomTypeChange={this.onGeomTypeChange}
-                    geomAttr={this.state.geomAttr}
-                    handleDropGeomAttr={this.handleDropGeomAttr}
-                    dimensions={dimensions}
-                    measures={measures}
-                />
-                <Coordinate
-                    yAxis={this.state.yAxis}
-                    xAxis={this.state.xAxis}
-                    dimensions={this.dimensions}
-                    dragItem={this.state.dragItem}
-                    handleDropX={this.handleDropX}
-                    handleDropY={this.handleDropY}
-                />
+                <div className="workspace-container">
+                    <Data
+                        dimensions={dimensions}
+                        measures={measures}
+                        setDragItem={this.setDragItem}
+                    />
+                    <Geom
+                        geomTypeOptions={this.state.geomTypeOptions}
+                        geomType={this.state.geomType}
+                        onGeomTypeChange={this.onGeomTypeChange}
+                        geomAttr={this.state.geomAttr}
+                        handleDropGeomAttr={this.handleDropGeomAttr}
+                        dimensions={dimensions}
+                        measures={measures}
+                    />
+                    <Coordinate
+                        yAxis={this.state.yAxis}
+                        xAxis={this.state.xAxis}
+                        dimensions={this.dimensions}
+                        dragItem={this.state.dragItem}
+                        handleDropX={this.handleDropX}
+                        handleDropY={this.handleDropY}
+                    />
+                </div>
+                {dataSource.length > 0 && (
+                    <div className="data-table">
+                        <Table dataSource={dataSource} columns={columns} />
+                    </div>
+                )}
             </div>
         );
     }
