@@ -1,4 +1,5 @@
 import React from 'react';
+import Chart from '../chart';
 
 export default class Coordinate extends React.Component {
     render() {
@@ -7,7 +8,7 @@ export default class Coordinate extends React.Component {
                 <div className="axis y-axis gray-border">
                     <h3>Y 轴</h3>
                 </div>
-                <div className="chart-container gray-border" />
+                <Chart />
                 <div className="axis x-axis gray-border">
                     <h3>X 轴</h3>
                 </div>
