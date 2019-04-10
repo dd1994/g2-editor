@@ -1,7 +1,5 @@
 import React from 'react';
-import { Tag } from 'antd';
-import { Menu, Dropdown, Icon } from 'antd';
-import { Color, DropDownOperation } from '../types';
+import { Color } from '../types';
 import GeomTypeSelector from './geom-type-selector';
 import GeomAttrList from './geom-attr-list';
 import { GeomAttrValueList } from './geom-attr-value-list';
@@ -36,37 +34,6 @@ export default class Geom extends React.Component<
     };
 
     render() {
-        const geomAttrsValue = Object.keys(this.props.geomAttr).reduce((acc: any, key: string) => {
-            return acc.concat(
-                this.props.geomAttr[key].map((val: string) => {
-                    const menu = (
-                        <Menu onClick={this.handleGeomAttrDropdown}>
-                            <Menu.Item
-                                key={JSON.stringify({
-                                    operation: DropDownOperation.remove,
-                                    attr: key,
-                                    value: val
-                                })}
-                            >
-                                <a href="#">移除</a>
-                            </Menu.Item>
-                        </Menu>
-                    );
-                    return (
-                        <li key={key + val} className="geom-attr-value-item">
-                            <Tag color={this.getFieldColor(val)}>
-                                <Dropdown overlay={menu} trigger={['click']}>
-                                    <a className="ant-dropdown-link" href="#">
-                                        {key}: {val} <Icon type="down" />
-                                    </a>
-                                </Dropdown>
-                            </Tag>
-                        </li>
-                    );
-                })
-            );
-        }, []);
-
         return (
             <div className="geom gray-border">
                 <GeomTypeSelector

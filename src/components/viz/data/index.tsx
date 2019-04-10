@@ -9,7 +9,10 @@ export default class Data extends React.Component<
     render() {
         return (
             <div className="data gray-border">
-                <Dimension dimensions={this.props.dimensions} setDragItem={this.props.setDragItem} />
+                <Dimension
+                    dimensions={this.props.dimensions}
+                    setDragItem={this.props.setDragItem}
+                />
                 <Measure measures={this.props.measures} setDragItem={this.props.setDragItem} />
             </div>
         );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import Data from './components/viz/data/data';
+import Data from './components/viz/data/index';
 import { data } from './components/viz/data/gdp';
 import G2 from '@antv/g2';
 import * as R from 'ramda';
