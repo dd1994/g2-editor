@@ -5,7 +5,7 @@ const Option = Select.Option;
 
 export default class CoordinateSelector extends React.Component<
     {
-        onCoordinateTypeChange: any;
+        handleCoordinateTypeChange: any;
     },
     {}
 > {
@@ -22,7 +22,7 @@ export default class CoordinateSelector extends React.Component<
                 <Select
                     style={{ width: 120 }}
                     defaultValue={CoordinateType.rect}
-                    onChange={this.props.onCoordinateTypeChange}
+                    onChange={this.props.handleCoordinateTypeChange}
                 >
                     {options}
                 </Select>

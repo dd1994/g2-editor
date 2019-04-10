@@ -231,7 +231,7 @@ class App extends Component<
             }
         }
     };
-    onCoordinateTypeChange = (val: CoordinateType) => {
+    handleCoordinateTypeChange = (val: CoordinateType) => {
         this.setState(
             {
                 coordinateType: val
@@ -301,7 +301,7 @@ class App extends Component<
                         dimensions={dimensions}
                         measures={measures}
                         handleGeomAttrDropdown={this.handleGeomAttrDropdown}
-                        onCoordinateTypeChange={this.onCoordinateTypeChange}
+                        handleCoordinateTypeChange={this.handleCoordinateTypeChange}
                         handleAdjustTypeChange={this.handleAdjustTypeChange}
                     />
                     <Coordinate

@@ -16,7 +16,7 @@ export default class Geom extends React.Component<
         dimensions: Array<string>;
         measures: Array<string>;
         handleGeomAttrDropdown: any;
-        onCoordinateTypeChange: any;
+        handleCoordinateTypeChange: any;
         handleAdjustTypeChange: any;
     },
     any
@@ -46,7 +46,9 @@ export default class Geom extends React.Component<
                     geomType={this.props.geomType}
                     onGeomTypeChange={this.props.onGeomTypeChange}
                 />
-                <CoordinateSelector onCoordinateTypeChange={this.props.onCoordinateTypeChange} />
+                <CoordinateSelector
+                    handleCoordinateTypeChange={this.props.handleCoordinateTypeChange}
+                />
                 <AdjustTypeSelector handleAdjustTypeChange={this.props.handleAdjustTypeChange} />
                 <GeomAttrList
                     geomAttr={this.props.geomAttr}
