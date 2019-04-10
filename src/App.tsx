@@ -7,7 +7,14 @@ import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
-import { Field, GeomAttr, DropDownOperation, AxisType, GeomType } from './components/viz/types';
+import {
+    Field,
+    GeomAttr,
+    DropDownOperation,
+    AxisType,
+    GeomType,
+    CoordinateType
+} from './components/viz/types';
 import { Table } from 'antd';
 
 const DataSet = require('@antv/data-set');
@@ -22,6 +29,7 @@ class App extends Component<
         xAxis: Array<Field>;
         yAxis: Array<Field>;
         chart: any;
+        coordinateType: CoordinateType;
     }
 > {
     constructor(props: any) {
@@ -75,7 +83,8 @@ class App extends Component<
             dragItem: '',
             xAxis: [],
             yAxis: [],
-            chart: null
+            chart: null,
+            coordinateType: CoordinateType.rect
         };
     }
 
@@ -217,6 +226,15 @@ class App extends Component<
             }
         }
     };
+    onCoordinateTypeChange = (val: CoordinateType) => {
+        this.setState(
+            {
+                coordinateType: val
+            },
+            this.renderChart
+        );
+    };
+
     handleGeomAttrDropdown = ({
         operation,
         attr,
@@ -269,6 +287,7 @@ class App extends Component<
                         dimensions={dimensions}
                         measures={measures}
                         handleGeomAttrDropdown={this.handleGeomAttrDropdown}
+                        onCoordinateTypeChange={this.onCoordinateTypeChange}
                     />
                     <Coordinate
                         yAxis={this.state.yAxis}

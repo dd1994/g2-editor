@@ -15,6 +15,12 @@ export enum AxisType { //  笛卡尔坐标系 x 轴 或 y 轴
     y = 'y'
 }
 
+export enum CoordinateType {
+    rect = 'rect',
+    polar = 'polar',
+    theta = 'theta',
+    helix = 'helix'
+}
 export enum DropDownOperation { // 下拉框的操作类型
     remove
 }
