@@ -6,7 +6,6 @@ import { data } from './components/viz/data/gdp';
 import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/map';
-import Coordinate from './components/viz/coordinate';
 import {
     Field,
     GeomAttr,

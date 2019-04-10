@@ -5,7 +5,7 @@ import GeomAttrList from './geom-attr-list';
 import { GeomAttrValueList } from './geom-attr-value-list';
 import CoordinateSelector from './coordinate-selector';
 import AdjustTypeSelector from './adjust-type-selector';
-import Axis from '../coordinate/axis';
+import Axis from '../axis/index';
 
 export default class Geom extends React.Component<
     {
