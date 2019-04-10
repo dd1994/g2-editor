@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, AxisType, Color } from '../types';
 import AxisItem from './axis-item';
+import { Divider } from 'antd';
 
 export default class Axis extends React.Component<
     {
@@ -36,6 +37,7 @@ export default class Axis extends React.Component<
             <div className="axis" onDrop={this.props.handleDrop} onDragOver={this.handleDragOver}>
                 <h3>{this.props.axisType} 轴</h3>
                 <ul>{list}</ul>
+                <Divider />
             </div>
         );
     }
