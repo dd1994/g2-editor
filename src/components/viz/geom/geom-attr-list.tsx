@@ -27,6 +27,6 @@ export default class GeomAttrList extends React.Component<
                 </div>
             );
         });
-        return <div className="geom-attr-container">{geomAttrs}</div>;
+        return <div className="geom-attr-list">{geomAttrs}</div>;
     }
 }

@@ -34,7 +34,7 @@
     padding: 5px;
 }
 
-.geom .geom-attr-container {
+.geom .geom-attr-list {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
