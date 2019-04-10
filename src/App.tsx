@@ -7,7 +7,7 @@ import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
-import { Field, GeomAttr, DropDownOperation, AxisType } from './components/viz/types';
+import { Field, GeomAttr, DropDownOperation, AxisType, GeomType } from './components/viz/types';
 import { Table } from 'antd';
 
 const DataSet = require('@antv/data-set');
@@ -16,11 +16,11 @@ class App extends Component<
     {
         data: any;
         geomAttr: any;
-        geomTypeOptions: any;
-        geomType: any;
+        geomTypeOptions: Array<{ label: GeomType; value: GeomType }>;
+        geomType: GeomType;
         dragItem: Field;
-        xAxis: Array<string>;
-        yAxis: Array<string>;
+        xAxis: Array<Field>;
+        yAxis: Array<Field>;
         chart: any;
     }
 > {
@@ -105,7 +105,7 @@ class App extends Component<
         });
     }
 
-    onGeomTypeChange = (val: string) => {
+    onGeomTypeChange = (val: GeomType) => {
         this.setState({ geomType: val }, this.renderChart);
     };
 

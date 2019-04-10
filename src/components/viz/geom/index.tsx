@@ -2,6 +2,7 @@ import React from 'react';
 import { Select, Tag, message } from 'antd';
 import { Menu, Dropdown, Icon } from 'antd';
 import { Color, DropDownOperation, GeomAttr, Field } from '../types';
+import GeomTypeSelector from './geom-type-selector';
 
 const Option = Select.Option;
 
@@ -88,14 +89,11 @@ export default class Geom extends React.Component<
 
         return (
             <div className="geom gray-border">
-                <h3>GEOM</h3>
-                <Select
-                    style={{ width: 120 }}
-                    defaultValue={this.props.geomType}
-                    onChange={this.props.onGeomTypeChange}
-                >
-                    {options}
-                </Select>
+                <GeomTypeSelector
+                    geomTypeOptions={this.props.geomTypeOptions}
+                    geomType={this.props.geomType}
+                    onGeomTypeChange={this.props.onGeomTypeChange}
+                />
                 <div className="geom-attr-container">{geomAttrs}</div>
                 <ul className="geom-attr-value">{geomAttrsValue}</ul>
             </div>
