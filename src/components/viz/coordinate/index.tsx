@@ -1,7 +1,6 @@
 import React from 'react';
 import Chart from '../chart';
-import AxisItem from './axis-item';
-import { AxisType, Color, Field, GeomAttr } from '../types';
+import { AxisType, Field } from '../types';
 import Axis from './axis';
 
 export default class Coordinate extends React.Component<
@@ -16,12 +15,6 @@ export default class Coordinate extends React.Component<
     },
     {}
 > {
-    getFieldColor = (field: Field) => {
-        return this.props.dimensions.includes(field) ? Color.blue : Color.green;
-    };
-    handleDragOver(e: any) {
-        e.preventDefault();
-    }
     render() {
         return (
             <div className="coordinates-container">
