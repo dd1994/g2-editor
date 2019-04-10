@@ -278,16 +278,6 @@ class App extends Component<
     render() {
         const dimensions = this.dimensions;
         const measures = this.measures;
-        const dataSource = this.state.data.rows;
-        let columns;
-        if (dataSource.length) {
-            columns = Object.keys(dataSource[0]).map(item => {
-                return {
-                    title: item,
-                    dataIndex: item
-                };
-            });
-        }
         return (
             <div className="App">
                 <div className="workspace-container">
@@ -318,11 +308,6 @@ class App extends Component<
                         handleAxisDropdown={this.handleAxisDropdown}
                     />
                 </div>
-                {dataSource.length > 0 && (
-                    <div className="data-table">
-                        <Table dataSource={dataSource} columns={columns} />
-                    </div>
-                )}
             </div>
         );
     }

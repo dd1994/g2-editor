@@ -8,7 +8,7 @@ export default class Data extends React.Component<
 > {
     render() {
         return (
-            <div className="data gray-border">
+            <div className="data">
                 <Dimension
                     dimensions={this.props.dimensions}
                     setDragItem={this.props.setDragItem}

@@ -4,9 +4,13 @@
     border: 1px solid #ddd;
 }
 
+.App {
+    height: 100%;
+}
+
 .workspace-container {
+    height: 100%;
     display: flex;
-    align-items: flex-start;
     justify-content: flex-start;
 }
 
@@ -20,6 +24,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    border-right: 1px solid #ddd;
 }
 
 .dimensions ul,
@@ -32,6 +37,7 @@
     flex: none;
     margin: 5px;
     padding: 5px;
+    border-right: 1px solid #ddd;
 }
 
 .geom .geom-attr-list {

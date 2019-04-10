@@ -39,7 +39,7 @@ export default class Geom extends React.Component<
 
     render() {
         return (
-            <div className="geom gray-border">
+            <div className="geom">
                 <h3>GEOM</h3>
                 <GeomTypeSelector
                     geomTypeOptions={this.props.geomTypeOptions}
