@@ -33,21 +33,23 @@
 }
 
 .map {
+    border-right: 1px solid #ddd;
     width: 145px;
+}
+.geom {
     flex: none;
     margin: 5px;
     padding: 5px;
-    border-right: 1px solid #ddd;
 }
 
-.map .geom-attr-list {
+.geom .geom-attr-list {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
 }
 
-.map .geom-attr {
+.geom .geom-attr {
     width: 50px;
     height: 50px;
     margin: 2px 5px;
@@ -58,12 +60,12 @@
     justify-content: center;
 }
 
-.map .geom-attr-value {
+.geom .geom-attr-value {
     list-style: none;
     padding-left: 0; /* 这个我也不知道为啥要这么写 */
 }
 
-.map .geom-attr-value .geom-attr-value-item {
+.geom .geom-attr-value .geom-attr-value-item {
     margin: 5px;
 }
 
@@ -75,16 +77,13 @@
     flex: auto;
 }
 
-.coordinates-container .axis {
-    margin: 5px;
-    padding: 5px;
-    padding-right: 80px;
+.axis {
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.coordinates-container .axis ul {
+.axis ul {
     list-style: none;
 
     display: flex;

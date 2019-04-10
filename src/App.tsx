@@ -297,6 +297,12 @@ class App extends Component<
                         handleGeomAttrDropdown={this.handleGeomAttrDropdown}
                         handleCoordinateTypeChange={this.handleCoordinateTypeChange}
                         handleAdjustTypeChange={this.handleAdjustTypeChange}
+                        yAxis={this.state.yAxis}
+                        xAxis={this.state.xAxis}
+                        dragItem={this.state.dragItem}
+                        handleDropX={this.handleDropX}
+                        handleDropY={this.handleDropY}
+                        handleAxisDropdown={this.handleAxisDropdown}
                     />
                     <Coordinate
                         yAxis={this.state.yAxis}

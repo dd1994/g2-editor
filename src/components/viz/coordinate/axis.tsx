@@ -33,11 +33,7 @@ export default class Axis extends React.Component<
         });
 
         return (
-            <div
-                className="axis gray-border"
-                onDrop={this.props.handleDrop}
-                onDragOver={this.handleDragOver}
-            >
+            <div className="axis" onDrop={this.props.handleDrop} onDragOver={this.handleDragOver}>
                 <h3>{this.props.axisType} 轴</h3>
                 <ul>{list}</ul>
             </div>
