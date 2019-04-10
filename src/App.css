@@ -30,6 +30,9 @@
 .dimensions ul,
 .measures ul {
     list-style: none;
+
+    /* 我也不知道为啥要加这一行 */
+    padding-left: 0;
 }
 
 .map {
@@ -98,6 +101,6 @@
     width: 100%;
 }
 
-.data-table {
-    margin: 10px;
+.field-item {
+    width: 120px;
 }
