@@ -4,6 +4,7 @@ import { Menu, Dropdown, Icon } from 'antd';
 import { Color, DropDownOperation } from '../types';
 import GeomTypeSelector from './geom-type-selector';
 import GeomAttrList from './geom-attr-list';
+import { GeomAttrValueList } from './geom-attr-value-list';
 
 export default class Geom extends React.Component<
     {
@@ -77,7 +78,11 @@ export default class Geom extends React.Component<
                     geomAttr={this.props.geomAttr}
                     handleDropGeomAttr={this.props.handleDropGeomAttr}
                 />
-                <ul className="geom-attr-value">{geomAttrsValue}</ul>
+                <GeomAttrValueList
+                    geomAttr={this.props.geomAttr}
+                    handleGeomAttrDropdown={this.props.handleGeomAttrDropdown}
+                    getFieldColor={this.getFieldColor}
+                />
             </div>
         );
     }
