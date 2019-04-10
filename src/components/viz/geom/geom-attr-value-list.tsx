@@ -1,6 +1,5 @@
 import React from 'react';
-import { Menu, Tag, Dropdown, Icon } from 'antd';
-import { DropDownOperation, Field, Color, GeomAttr } from '../types';
+import { Field, GeomAttr } from '../types';
 import GeomAttrValueItem from './geom-attr-value-item';
 
 export class GeomAttrValueList extends React.Component<
@@ -17,20 +16,24 @@ export class GeomAttrValueList extends React.Component<
     };
 
     render() {
-        const geomAttrsValue = Object.keys(this.props.geomAttr).reduce((acc: any, key: string) => {
-            return acc.concat(
-                this.props.geomAttr[key].map((val: string) => {
-                    return (
-                        <GeomAttrValueItem
-                            attr={key}
-                            val={val}
-                            handleGeomAttrDropdown={this.props.handleGeomAttrDropdown}
-                            getFieldColor={this.props.getFieldColor}
-                        />
-                    );
-                })
-            );
-        }, []);
-        return <ul className="geom-attr-value">{geomAttrsValue}</ul>;
+        const geomAttrValue = Object.keys(this.props.geomAttr).reduce(
+            (acc: any, attr: GeomAttr) => {
+                return acc.concat(
+                    this.props.geomAttr[attr].map((val: Field) => {
+                        return (
+                            <GeomAttrValueItem
+                                key={attr + val}
+                                attr={attr}
+                                val={val}
+                                handleGeomAttrDropdown={this.props.handleGeomAttrDropdown}
+                                getFieldColor={this.props.getFieldColor}
+                            />
+                        );
+                    })
+                );
+            },
+            []
+        );
+        return <ul className="geom-attr-value">{geomAttrValue}</ul>;
     }
 }

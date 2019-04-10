@@ -31,7 +31,7 @@ export default class GeomAttrValueItem extends React.Component<
             </Menu>
         );
         return (
-            <li key={this.props.attr + this.props.val} className="geom-attr-value-item">
+            <li className="geom-attr-value-item">
                 <Tag color={this.props.getFieldColor(this.props.val)}>
                     <Dropdown overlay={menu} trigger={['click']}>
                         <a className="ant-dropdown-link" href="#">
