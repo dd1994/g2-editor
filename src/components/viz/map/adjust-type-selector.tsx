@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
-import { CoordinateType, AdjustType } from '../types';
+import { AdjustType } from '../types';
 const Option = Select.Option;
 
 export default class AdjustTypeSelector extends React.Component<
