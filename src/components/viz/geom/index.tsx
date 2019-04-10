@@ -1,10 +1,9 @@
 import React from 'react';
-import { Select, Tag, message } from 'antd';
+import { Tag } from 'antd';
 import { Menu, Dropdown, Icon } from 'antd';
-import { Color, DropDownOperation, GeomAttr, Field } from '../types';
+import { Color, DropDownOperation } from '../types';
 import GeomTypeSelector from './geom-type-selector';
-
-const Option = Select.Option;
+import GeomAttrList from './geom-attr-list';
 
 export default class Geom extends React.Component<
     {
@@ -36,26 +35,6 @@ export default class Geom extends React.Component<
     };
 
     render() {
-        const options = this.props.geomTypeOptions.map((item: { label: string; value: string }) => {
-            return (
-                <Option value={item.value} key={item.value}>
-                    {item.label}
-                </Option>
-            );
-        });
-        const geomAttrs = Object.keys(this.props.geomAttr).map((key: string) => {
-            return (
-                <div
-                    key={key}
-                    className="geom-attr gray-border"
-                    onDragOver={this.handleDragOver}
-                    onDrop={this.handleDrop.bind(this, key)}
-                >
-                    {key}
-                </div>
-            );
-        });
-
         const geomAttrsValue = Object.keys(this.props.geomAttr).reduce((acc: any, key: string) => {
             return acc.concat(
                 this.props.geomAttr[key].map((val: string) => {
@@ -94,7 +73,10 @@ export default class Geom extends React.Component<
                     geomType={this.props.geomType}
                     onGeomTypeChange={this.props.onGeomTypeChange}
                 />
-                <div className="geom-attr-container">{geomAttrs}</div>
+                <GeomAttrList
+                    geomAttr={this.props.geomAttr}
+                    handleDropGeomAttr={this.props.handleDropGeomAttr}
+                />
                 <ul className="geom-attr-value">{geomAttrsValue}</ul>
             </div>
         );

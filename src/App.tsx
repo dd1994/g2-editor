@@ -15,7 +15,7 @@ class App extends Component<
     {},
     {
         data: any;
-        geomAttr: any;
+        geomAttr: { [key: string]: Array<Field> };
         geomTypeOptions: Array<{ label: GeomType; value: GeomType }>;
         geomType: GeomType;
         dragItem: Field;
