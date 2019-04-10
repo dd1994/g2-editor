@@ -15,7 +15,7 @@ export default class Axis extends React.Component<
     {}
 > {
     getFieldColor = (field: Field) => {
-        return this.props.dimensions.includes(field) ? Color.blue : Color.green;
+        return this.props.dimensions.includes(field) ? 'primary' : 'dashed';
     };
     handleDragOver(e: any) {
         e.preventDefault();
