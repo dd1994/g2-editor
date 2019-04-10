@@ -21,7 +21,6 @@ export default class GeomTypeSelector extends React.Component<
         });
         return (
             <div className="geom-type-selector">
-                <h3>GEOM</h3>
                 <Select
                     style={{ width: 120 }}
                     defaultValue={this.props.geomType}
