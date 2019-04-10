@@ -33,7 +33,7 @@ export default class Geom extends React.Component<
         e.preventDefault();
     }
     getFieldColor = (attr: string) => {
-        return this.props.dimensions.includes(attr) ? Color.blue : Color.green;
+        return this.props.dimensions.includes(attr) ? 'primary' : 'dashed';
     };
 
     handleDrop = (attr: string) => {

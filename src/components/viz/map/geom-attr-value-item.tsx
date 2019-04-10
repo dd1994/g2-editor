@@ -1,4 +1,4 @@
-import { Menu, Tag, Dropdown, Icon } from 'antd';
+import { Menu, Tag, Dropdown, Icon, Button } from 'antd';
 import { GeomAttr, Field, DropDownOperation, Color } from '../types';
 import React from 'react';
 
@@ -32,13 +32,18 @@ export default class GeomAttrValueItem extends React.Component<
         );
         return (
             <li className="geom-attr-value-item">
-                <Tag color={this.props.getFieldColor(this.props.val)}>
+                <Button
+                    type={this.props.getFieldColor(this.props.val)}
+                    shape="round"
+                    size="small"
+                    block
+                >
                     <Dropdown overlay={menu} trigger={['click']}>
                         <a className="ant-dropdown-link" href="#">
                             {this.props.attr}: {this.props.val} <Icon type="down" />
                         </a>
                     </Dropdown>
-                </Tag>
+                </Button>
             </li>
         );
     }
