@@ -17,6 +17,7 @@ import {
     AdjustType
 } from './components/viz/types';
 import { Table } from 'antd';
+import Chart from './components/viz/chart';
 
 const DataSet = require('@antv/data-set');
 class App extends Component<
@@ -278,6 +279,7 @@ class App extends Component<
     render() {
         const dimensions = this.dimensions;
         const measures = this.measures;
+
         return (
             <div className="App">
                 <div className="workspace-container">
@@ -304,15 +306,7 @@ class App extends Component<
                         handleDropY={this.handleDropY}
                         handleAxisDropdown={this.handleAxisDropdown}
                     />
-                    <Coordinate
-                        yAxis={this.state.yAxis}
-                        xAxis={this.state.xAxis}
-                        dimensions={this.dimensions}
-                        dragItem={this.state.dragItem}
-                        handleDropX={this.handleDropX}
-                        handleDropY={this.handleDropY}
-                        handleAxisDropdown={this.handleAxisDropdown}
-                    />
+                    <Chart />
                 </div>
             </div>
         );
