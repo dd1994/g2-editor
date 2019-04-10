@@ -31,7 +31,7 @@ class App extends Component<
         yAxis: Array<Field>;
         chart: any;
         coordinateType: CoordinateType;
-        adjustType: AdjustType | null;
+        adjustType: Array<AdjustType>;
     }
 > {
     constructor(props: any) {
@@ -87,7 +87,7 @@ class App extends Component<
             yAxis: [],
             chart: null,
             coordinateType: CoordinateType.rect,
-            adjustType: null
+            adjustType: []
         };
     }
 
@@ -194,6 +194,9 @@ class App extends Component<
                 geom[attr](this.state.geomAttr[attr].join('*'));
             }
         });
+        if (this.state.adjustType) {
+            geom.adjust(R.clone(this.state.adjustType));
+        }
         this.state.chart.repaint();
     };
     componentDidMount() {
@@ -240,7 +243,7 @@ class App extends Component<
         );
     };
 
-    handleAdjustTypeChange = (val: AdjustType) => {
+    handleAdjustTypeChange = (val: Array<AdjustType>) => {
         this.setState(
             {
                 adjustType: val

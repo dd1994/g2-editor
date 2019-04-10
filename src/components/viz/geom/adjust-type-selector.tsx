@@ -19,7 +19,11 @@ export default class AdjustTypeSelector extends React.Component<
         });
         return (
             <div>
-                <Select style={{ width: 120 }} onChange={this.props.handleAdjustTypeChange}>
+                <Select
+                    mode="multiple"
+                    style={{ width: 120 }}
+                    onChange={this.props.handleAdjustTypeChange}
+                >
                     {options}
                 </Select>
             </div>
