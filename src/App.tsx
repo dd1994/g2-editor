@@ -13,7 +13,8 @@ import {
     DropDownOperation,
     AxisType,
     GeomType,
-    CoordinateType
+    CoordinateType,
+    AdjustType
 } from './components/viz/types';
 import { Table } from 'antd';
 
@@ -30,6 +31,7 @@ class App extends Component<
         yAxis: Array<Field>;
         chart: any;
         coordinateType: CoordinateType;
+        adjustType: AdjustType | null;
     }
 > {
     constructor(props: any) {
@@ -84,7 +86,8 @@ class App extends Component<
             xAxis: [],
             yAxis: [],
             chart: null,
-            coordinateType: CoordinateType.rect
+            coordinateType: CoordinateType.rect,
+            adjustType: null
         };
     }
 
@@ -237,6 +240,15 @@ class App extends Component<
         );
     };
 
+    handleAdjustTypeChange = (val: AdjustType) => {
+        this.setState(
+            {
+                adjustType: val
+            },
+            this.renderChart
+        );
+    };
+
     handleGeomAttrDropdown = ({
         operation,
         attr,
@@ -290,6 +302,7 @@ class App extends Component<
                         measures={measures}
                         handleGeomAttrDropdown={this.handleGeomAttrDropdown}
                         onCoordinateTypeChange={this.onCoordinateTypeChange}
+                        handleAdjustTypeChange={this.handleAdjustTypeChange}
                     />
                     <Coordinate
                         yAxis={this.state.yAxis}

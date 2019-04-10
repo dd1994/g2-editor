@@ -21,6 +21,13 @@ export enum CoordinateType {
     theta = 'theta',
     helix = 'helix'
 }
+
+export enum AdjustType {
+    stack = 'stack',
+    jitter = 'jitter',
+    dodge = 'dodge',
+    symmetric = 'symmetric'
+}
 export enum DropDownOperation { // 下拉框的操作类型
     remove
 }

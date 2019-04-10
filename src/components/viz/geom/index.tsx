@@ -4,6 +4,7 @@ import GeomTypeSelector from './geom-type-selector';
 import GeomAttrList from './geom-attr-list';
 import { GeomAttrValueList } from './geom-attr-value-list';
 import CoordinateSelector from './coordinate-selector';
+import AdjustTypeSelector from './adjust-type-selector';
 
 export default class Geom extends React.Component<
     {
@@ -16,6 +17,7 @@ export default class Geom extends React.Component<
         measures: Array<string>;
         handleGeomAttrDropdown: any;
         onCoordinateTypeChange: any;
+        handleAdjustTypeChange: any;
     },
     any
 > {
@@ -45,6 +47,7 @@ export default class Geom extends React.Component<
                     onGeomTypeChange={this.props.onGeomTypeChange}
                 />
                 <CoordinateSelector onCoordinateTypeChange={this.props.onCoordinateTypeChange} />
+                <AdjustTypeSelector handleAdjustTypeChange={this.props.handleAdjustTypeChange} />
                 <GeomAttrList
                     geomAttr={this.props.geomAttr}
                     handleDropGeomAttr={this.props.handleDropGeomAttr}

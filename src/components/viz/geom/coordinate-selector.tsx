@@ -18,10 +18,10 @@ export default class CoordinateSelector extends React.Component<
             );
         });
         return (
-            <div className="geom-type-selector">
+            <div>
                 <Select
                     style={{ width: 120 }}
-                    defaultValue="rect"
+                    defaultValue={CoordinateType.rect}
                     onChange={this.props.onCoordinateTypeChange}
                 >
                     {options}
