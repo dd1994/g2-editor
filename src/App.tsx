@@ -181,6 +181,8 @@ class App extends Component<
             return;
         }
 
+        this.state.chart.coord(this.state.coordinateType);
+
         const geom = this.state.chart.source(this.state.data)[this.state.geomType]();
         geom.position(`${this.state.xAxis[0]}*${this.state.yAxis[0]}`);
 
