@@ -7,9 +7,9 @@ export type Field = string;
 
 export type GeomAttr = string;
 
-export enum Axis {
-    x,
-    y
+export enum AxisType {
+    x = 'x',
+    y = 'y'
 }
 
 export enum DropDownOperation {

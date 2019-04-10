@@ -7,7 +7,7 @@ import G2 from '@antv/g2';
 import * as R from 'ramda';
 import Geom from './components/viz/geom';
 import Coordinate from './components/viz/coordinate';
-import { Field, GeomAttr, DropDownOperation, Axis } from './components/viz/types';
+import { Field, GeomAttr, DropDownOperation, AxisType } from './components/viz/types';
 import { Table } from 'antd';
 
 const DataSet = require('@antv/data-set');
@@ -196,18 +196,18 @@ class App extends Component<
         value
     }: {
         operation: DropDownOperation;
-        axis: Axis;
+        axis: AxisType;
         value: Field;
     }) => {
         if (operation === DropDownOperation.remove) {
-            if (axis === Axis.x) {
+            if (axis === AxisType.x) {
                 this.setState(
                     {
                         xAxis: R.without([value], this.state.xAxis)
                     },
                     this.renderChart
                 );
-            } else if (axis === Axis.y) {
+            } else if (axis === AxisType.y) {
                 this.setState(
                     {
                         yAxis: R.without([value], this.state.yAxis)

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Tag, Dropdown, Icon, Menu } from 'antd';
-import { Color, Axis, Field, DropDownOperation } from '../types';
+import { Color, AxisType, Field, DropDownOperation } from '../types';
 
 export default class AxisItem extends React.Component<
-    { field: Field; axis: Axis; color: Color; handleAxisDropdown: any },
+    { field: Field; axis: AxisType; color: Color; handleAxisDropdown: any },
     {}
 > {
     handleAxisDropdown = ({ key }: { key: string }) => {
