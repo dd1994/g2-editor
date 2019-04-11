@@ -18,7 +18,7 @@ export default class AdjustTypeSelector extends React.Component<
             );
         });
         return (
-            <div>
+            <div className="adjust-type-selector">
                 <Select
                     mode="multiple"
                     style={{ width: 120 }}

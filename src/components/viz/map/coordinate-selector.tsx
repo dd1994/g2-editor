@@ -18,7 +18,7 @@ export default class CoordinateSelector extends React.Component<
             );
         });
         return (
-            <div>
+            <div className="coordinate-selector">
                 <Select
                     style={{ width: 120 }}
                     defaultValue={CoordinateType.rect}

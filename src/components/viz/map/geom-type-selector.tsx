@@ -20,7 +20,7 @@ export default class GeomTypeSelector extends React.Component<
             );
         });
         return (
-            <div>
+            <div className="geom-type-selector">
                 <Select
                     style={{ width: 120 }}
                     defaultValue={this.props.geomType}

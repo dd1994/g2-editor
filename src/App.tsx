@@ -78,7 +78,8 @@ class App extends Component<
                 size: [],
                 label: [],
                 tooltip: [],
-                shape: []
+                shape: [],
+                opacity: []
             },
             dragItem: '',
             xAxis: [],
