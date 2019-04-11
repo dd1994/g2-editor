@@ -199,7 +199,7 @@ class App extends Component<
         Object.keys(this.state.geomAttr).forEach((attr: GeomAttr) => {
             if (this.state.geomAttr[attr].length) {
                 geom[attr](this.state.geomAttr[attr].join('*'));
-                geomAttrCode += `geom.${attr}('${this.state.geomAttr[attr].join('*')}');
+                geomAttrCode += `geom.${attr}('${this.state.geomAttr[attr].join('*')}')
         `;
             }
         });
@@ -215,13 +215,13 @@ class App extends Component<
             container: 'mountNode',
             width: 800,
             padding: 'auto'
-        });
-        const data = ${this.state.data};
-        chart.coord('${this.state.coordinateType}');
-        const geom = chart.source(data).${this.state.geomType}();
-        geom.position('${this.state.xAxis[0]}*${this.state.yAxis[0]}');
+        })
+        const data = ${this.state.data}
+        chart.coord('${this.state.coordinateType}')
+        const geom = chart.source(data).${this.state.geomType}()
+        geom.position('${this.state.xAxis[0]}*${this.state.yAxis[0]}')
         ${geomAttrCode}
-        chart.render();
+        chart.render()
         `;
         this.setState(
             {
