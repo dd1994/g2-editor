@@ -30,8 +30,6 @@
 .dimensions ul,
 .measures ul {
     list-style: none;
-
-    /* 我也不知道为啥要加这一行 */
 }
 
 .map {

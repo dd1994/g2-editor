@@ -15,7 +15,6 @@ import {
     CoordinateType,
     AdjustType
 } from './components/viz/types';
-import { Table } from 'antd';
 import Chart from './components/viz/chart';
 
 const DataSet = require('@antv/data-set');
@@ -79,8 +78,7 @@ class App extends Component<
                 size: [],
                 label: [],
                 tooltip: [],
-                shape: [],
-                fields: []
+                shape: []
             },
             dragItem: '',
             xAxis: [],
@@ -125,7 +123,7 @@ class App extends Component<
         this.setState({ dragItem: val });
     };
     geomAttrCouldIncludesMultipleValue(attr: GeomAttr) {
-        return ['label', 'tooltip', 'fields'].includes(attr);
+        return ['label', 'tooltip'].includes(attr);
     }
     handleDropGeomAttr = (attr: GeomAttr) => {
         if (this.geomAttrCouldIncludesMultipleValue(attr)) {
