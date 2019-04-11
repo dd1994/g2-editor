@@ -17,6 +17,7 @@ import {
 } from './components/viz/types';
 import Chart from './components/viz/chart';
 import G2Code from './components/viz/g2-code';
+import Prism from 'prismjs';
 
 const DataSet = require('@antv/data-set');
 class App extends Component<
@@ -32,6 +33,7 @@ class App extends Component<
         chart: any;
         coordinateType: CoordinateType;
         adjustType: Array<AdjustType>;
+        g2code: string;
     }
 > {
     constructor(props: any) {
@@ -87,7 +89,8 @@ class App extends Component<
             yAxis: [],
             chart: null,
             coordinateType: CoordinateType.rect,
-            adjustType: []
+            adjustType: [],
+            g2code: ''
         };
     }
 
@@ -175,6 +178,9 @@ class App extends Component<
     renderChart = () => {
         this.state.chart.clear();
 
+        this.setState({
+            g2code: ''
+        });
         if (
             R.any(
                 R.isEmpty,
@@ -189,15 +195,40 @@ class App extends Component<
         const geom = this.state.chart.source(this.state.data)[this.state.geomType]();
         geom.position(`${this.state.xAxis[0]}*${this.state.yAxis[0]}`);
 
+        let geomAttrCode = '';
         Object.keys(this.state.geomAttr).forEach((attr: GeomAttr) => {
             if (this.state.geomAttr[attr].length) {
                 geom[attr](this.state.geomAttr[attr].join('*'));
+                geomAttrCode += `geom.${attr}('${this.state.geomAttr[attr].join('*')}');
+        `;
             }
         });
-        if (this.state.adjustType) {
+        if (this.state.adjustType.length) {
             geom.adjust(R.clone(this.state.adjustType));
+            geomAttrCode += `geom.adjust(${JSON.stringify(this.state.adjustType)})
+            `;
         }
         this.state.chart.repaint();
+
+        let code = `
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            width: 800,
+            padding: 'auto'
+        });
+        const data = ${this.state.data};
+        chart.coord('${this.state.coordinateType}');
+        const geom = chart.source(data).${this.state.geomType}();
+        geom.position('${this.state.xAxis[0]}*${this.state.yAxis[0]}');
+        ${geomAttrCode}
+        chart.render();
+        `;
+        this.setState(
+            {
+                g2code: code
+            },
+            Prism.highlightAll
+        );
     };
     componentDidMount() {
         const chart: G2.Chart = new G2.Chart({
@@ -306,7 +337,7 @@ class App extends Component<
                     />
                     <div className="right-space-wrapper">
                         <Chart />
-                        <G2Code />
+                        {this.state.g2code && <G2Code code={this.state.g2code} />}
                     </div>
                 </div>
             </div>

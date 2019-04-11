@@ -1,17 +1,17 @@
 import React from 'react';
-import Prism from 'prismjs';
 import './prism.css';
 
-export default class G2Code extends React.Component {
-    componentDidMount() {
-        Prism.highlightAll();
-    }
-
+export default class G2Code extends React.Component<
+    {
+        code: string;
+    },
+    {}
+> {
     render() {
         return (
             <div className="g2-code">
                 <pre>
-                    <code className="lang-javascript">console.log('h')</code>
+                    <code className="lang-javascript">{this.props.code}</code>
                 </pre>
             </div>
         );
