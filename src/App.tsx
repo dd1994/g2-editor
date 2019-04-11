@@ -16,6 +16,7 @@ import {
     AdjustType
 } from './components/viz/types';
 import Chart from './components/viz/chart';
+import G2Code from './components/viz/g2-code';
 
 const DataSet = require('@antv/data-set');
 class App extends Component<
@@ -277,7 +278,6 @@ class App extends Component<
     render() {
         const dimensions = this.dimensions;
         const measures = this.measures;
-
         return (
             <div className="App">
                 <div className="workspace-container">
@@ -304,7 +304,10 @@ class App extends Component<
                         handleDropY={this.handleDropY}
                         handleAxisDropdown={this.handleAxisDropdown}
                     />
-                    <Chart />
+                    <div className="right-space-wrapper">
+                        <Chart />
+                        <G2Code />
+                    </div>
                 </div>
             </div>
         );

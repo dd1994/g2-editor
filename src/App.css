@@ -93,6 +93,10 @@
     margin: 5px;
 }
 
+.right-space-wrapper {
+    width: 100%;
+}
+
 .chart-container {
     margin: 5px;
     width: 100%;
@@ -110,4 +114,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.g2-code {
+    margin: 20px;
+    padding: 20px;
 }
